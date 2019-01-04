@@ -1,19 +1,19 @@
 
 This document describes the organization and build process for the RCloud Web-site.
 
-The document dinstinguished between two different types of site-file.
+The document distinguished between two different types of site-file.
 
 1) Topic files which are used to contain the content for the topics selected
-from the sites main menu. (e.g. Community, Try It!, Gallery, etc)
+from the sites main menu. (e.g. Community, Try It!, Gallery, etc.)
 
-2) External documentation files which are maintained sepearate from the site and contain
+2) External documentation files which are maintained separate from the site and contain
 the user guide and release notes for each version of the RCloud distribution.
 
 
 RCloud Web-site source tree
 ---------------------------
 
-This table gives the key elemnts of the source tree.  
+This table gives the key elements of the source tree.  
 
 --------------------------------------------------------------------------------------------------
 Folder                        Description
@@ -34,9 +34,9 @@ css                           CSS files used by all topics
 
 images                        Images used by topics 
 
-js                            Global Javascript files used by the global header and footer code
+js                            Global JavaScript files used by the global header and footer code
 
-html                          Common HTML files (header,footer,Pandoc template) used
+html                          Common HTML files (header, footer, Pandoc template) used
                               by all of the topic pages.
 		     
 html/template.html5           Default Pandoc topic template.
@@ -49,7 +49,7 @@ html/body_top_template.html   HTML used to create the header and navigation cont
                               for all of the topic pages.  Modifying this file will
 			      change the top menu throughout the site.
 
-html/body_bottom_templatehtml HTML used to create the footer for topic pages.
+html/body_bottom_template.html HTML used to create the footer for topic pages.
 			      Modifying this file will change the site footer
 			      throughout the site.
 			
@@ -106,10 +106,10 @@ index.yaml	 (Optional) Some topics are simplified by drawing data
 
 The site build process is responsible for generating the site folder tree,
 converting all of the markdown files to HTML, and populating the output tree
-with the HTML and auxiliary files (CSS,Javascript, images, etc).
+with the HTML and auxiliary files (CSS, JavaScript, images, etc.).
 
 The build process can be broken into two stages. The first stage
-builds the topic pages and the second state builds the external documenation.
+builds the topic pages and the second state builds the external documentation.
 
 The topic page build process produces two output files,
 'topic/index.html' and 'topic/index.css', for each topic folder.
@@ -135,7 +135,7 @@ cd ~/site_src  # Where site_src is the folder with the master Makefile.
 
 # OUT_DIR  = site output location
 # DOC_DIR  = path to the external documetation folder. This is the
-# folder containing the version folders (e.g. 1.3,1.4, etc)
+# folder containing the version folders (e.g. 1.3,1.4, etc.)
 make OUT_DIR=~/temp/foo DOC_DIR=path/to/rcloud/doc 
 ~~~~
 
@@ -146,7 +146,7 @@ to delete.
 make  clean
 ~~~~
 
-Remove intermeditate and output files. Note that this will not delete the
+Remove intermediate and output files. Note that this will not delete the
 output tree but will remove all files from it.
 ~~~~
 make OUT_DIR=~/temp/foo clean-all
@@ -170,10 +170,10 @@ is a wrapper around topic.mk.
 
 4) html/*_template.html files are  Pandoc template used to generate the header
 and footer for all HTML files (topic and external documentation) generated
-by the build process. The templates contain references to CSS and Javascript files
+by the build process. The templates contain references to CSS and JavaScript files
 contained in ./css and ./js as well as 'href' links to other files in the output tree.
-Templates are required to create the this content
-because the CSS,Javascript, and 'href' references, must reference the files irregardless of
+Templates are required to create this content
+because the CSS, JavaScript and 'href' references, must reference the files regardless of
 their own position in the output tree.  For example a file in the documentation folder
 can reference a CSS folder like this
 
@@ -181,7 +181,7 @@ can reference a CSS folder like this
   <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
 ~~~~
 
-but a documentation file in ./documenation/doc/1.3/guidocs/doc.html would need to
+but a documentation file in ./documentation/doc/1.3/guidocs/doc.html would need to
 reference it like this:
 
 ~~~~
@@ -189,7 +189,7 @@ reference it like this:
 ~~~~
 
 This problem is solved, in topic.mk, and doc.mk by generating intermediate
-files (e.g. head.html,body_top.html,body_bottom.html) with the path to the referenced files set according to the
+files (e.g. head.html, body_top.html, body_bottom.html) with the path to the referenced files set according to the
 location of the generated HTML file.  The generated file is then included in the
 final output file using the Pandoc options like `--include-in-header=head.html`.
 
